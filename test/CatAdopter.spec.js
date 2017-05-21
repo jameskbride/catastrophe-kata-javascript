@@ -1,6 +1,6 @@
 'use strict';
 
-import {CatAdopter, ADOPTION_FEE, SPAY_FEE, NEUTER_FEE} from '../src/CatAdopter'
+import {CatAdopter, ADOPTION_FEE, SPAY_FEE} from '../src/CatAdopter'
 
 var chai = require('chai');
 var assert = chai.assert;
@@ -20,6 +20,7 @@ describe('CatAdopter', () => {
 
         it('should deduct a $100 one-time fee from the savings', () => {
             let result = catAdopter.adopt({currentSavings: 100}, ADOPTION_FEE, SPAY_FEE_OVERRIDE, NEUTER_FEE_OVERRIDE);
+
             assert.equal(0, result.currentSavings);
         });
 
