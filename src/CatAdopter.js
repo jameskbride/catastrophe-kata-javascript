@@ -9,11 +9,19 @@ class CatAdopter {
 
     adopt(adoptionParams, adoptionFee = ADOPTION_FEE, spayFee = SPAY_FEE, neuterFee = NEUTER_FEE ) {
         let adoptionResults = this.applyAdoptionRules(adoptionParams, adoptionFee);
-        if (adoptionParams.currentCatCount == 0 || adoptionParams.currentCatCount % 2 === 0) {
+        if (this.isFemaleCat(adoptionParams.currentCatCount)) {
             return {currentSavings: adoptionResults.currentSavings - spayFee};
         } else {
             return {currentSavings: adoptionResults.currentSavings - neuterFee};
         }
+    }
+
+    isFemaleCat(currentCatCount) {
+        return this.isFirstCat(currentCatCount) || currentCatCount % 2 === 0;
+    }
+
+    isFirstCat(currentCatCount) {
+        return currentCatCount == 0;
     }
 
     applyAdoptionRules(adoptionParams, adoptionFee) {
