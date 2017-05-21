@@ -1,7 +1,11 @@
 'use strict';
 class CatAdopter {
     adopt(adoptionParams) {
-        return {currentSavings: 0};
+        if (adoptionParams.currentCatCount >= 21) {
+            return {currentSavings: adoptionParams.currentSavings}
+        } else {
+            return {currentSavings: adoptionParams.currentSavings - 100};
+        }
     }
 }
 export {CatAdopter}
